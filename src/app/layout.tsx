@@ -1,18 +1,32 @@
+import {NextIntlClientProvider} from 'next-intl';
+import {getLocale, getMessages, getTranslations} from 'next-intl/server';
 import './globals.css'
 
-export const metadata = {
-  title: 'Medical Record SaaS',
-  description: 'Multi-tenant medical record management system',
+export async function generateMetadata() {
+  const locale = await getLocale();
+  const t = await getTranslations({locale, namespace: 'metadata'});
+
+  return {
+    title: t('title'),
+    description: t('description')
+  };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang={locale}>
+      <body>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+      </body>
     </html>
   )
 }

@@ -1,0 +1,96 @@
+{
+  "metadata": {
+    "title": "Medical Record SaaS",
+    "description": "Multi-tenant medical record management system"
+  },
+  "homepage": {
+    "title": "Medical Record SaaS",
+    "subtitle": "Complete multi-tenant medical practice management system. Secure, scalable, and designed for healthcare professionals.",
+    "viewDashboard": "View Dashboard",
+    "getStarted": "Get Started",
+    "features": {
+      "multiTenant": {
+        "title": "Multi-Tenant",
+        "description": "Complete isolation between medical practices with subdomain-based tenancy"
+      },
+      "patientManagement": {
+        "title": "Patient Management",
+        "description": "Comprehensive patient records with medical history and demographics"
+      },
+      "professionalDashboard": {
+        "title": "Professional Dashboard",
+        "description": "Real-time statistics and quick actions for medical professionals"
+      }
+    },
+    "keyFeatures": {
+      "title": "Key Features",
+      "secureMultiTenancy": {
+        "title": "🔒 Secure Multi-Tenancy",
+        "description": "Complete data isolation between medical practices"
+      },
+      "roleBasedAccess": {
+        "title": "👨‍⚕️ Role-Based Access",
+        "description": "Admin, Doctor, Nurse, and Receptionist roles"
+      },
+      "responsiveDesign": {
+        "title": "📱 Responsive Design",
+        "description": "Works perfectly on desktop and mobile devices"
+      },
+      "modernTechStack": {
+        "title": "🚀 Modern Tech Stack",
+        "description": "Built with Next.js 14, TypeScript, and Prisma"
+      }
+    }
+  },
+  "dashboard": {
+    "logo": "🏥 Demo Medical Clinic",
+    "navigation": {
+      "dashboard": "Dashboard",
+      "patients": "Patients",
+      "records": "Records",
+      "users": "Users"
+    },
+    "userGreeting": "Dr. Admin User",
+    "title": "Dashboard",
+    "subtitle": "Welcome to your medical practice management system",
+    "stats": {
+      "totalPatients": "Total Patients",
+      "medicalRecords": "Medical Records",
+      "recentActivity": "Recent Activity",
+      "scheduledToday": "Scheduled Today"
+    },
+    "quickActions": {
+      "title": "Quick Actions",
+      "addNewPatient": {
+        "title": "Add New Patient",
+        "description": "Register a new patient in the system"
+      },
+      "createRecord": {
+        "title": "Create Record",
+        "description": "Add a new medical record"
+      },
+      "scheduleAppointment": {
+        "title": "Schedule Appointment",
+        "description": "Book a new appointment"
+      },
+      "manageUsers": {
+        "title": "Manage Users",
+        "description": "Add or edit staff members"
+      }
+    },
+    "recentActivity": {
+      "title": "Recent Activity",
+      "newPatientRegistered": "New patient registered",
+      "johnSmithAdded": "John Smith added to the system",
+      "medicalRecordUpdated": "Medical record updated",
+      "followUpNotes": "Follow-up notes added for Jane Doe",
+      "newStaffMember": "New staff member added",
+      "drSarahJohnson": "Dr. Sarah Johnson joined as Doctor",
+      "hoursAgo": {
+        "2": "2 hours ago",
+        "4": "4 hours ago",
+        "6": "6 hours ago"
+      }
+    }
+  }
+}

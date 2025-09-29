@@ -1,23 +1,27 @@
 import Link from 'next/link'
+import {getTranslations} from 'next-intl/server';
+import LanguageSwitcher from '../components/LanguageSwitcher'
 
-export default function Home() {
+export default async function Home() {
+  const t = await getTranslations('homepage');
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-16">
+        <LanguageSwitcher />
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            Medical Record SaaS
+            {t('title')}
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Complete multi-tenant medical practice management system. 
-            Secure, scalable, and designed for healthcare professionals.
+            {t('subtitle')}
           </p>
           <div className="flex gap-4 justify-center">
             <Link href="/dashboard" className="button">
-              View Dashboard
+              {t('viewDashboard')}
             </Link>
             <Link href="/auth/signup" className="button button-secondary">
-              Get Started
+              {t('getStarted')}
             </Link>
           </div>
         </div>
@@ -25,47 +29,47 @@ export default function Home() {
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           <div className="card text-center">
             <div className="text-4xl mb-4">🏥</div>
-            <h3 className="text-xl font-semibold mb-3">Multi-Tenant</h3>
+            <h3 className="text-xl font-semibold mb-3">{t('features.multiTenant.title')}</h3>
             <p className="text-gray-600">
-              Complete isolation between medical practices with subdomain-based tenancy
+              {t('features.multiTenant.description')}
             </p>
           </div>
           
           <div className="card text-center">
             <div className="text-4xl mb-4">👥</div>
-            <h3 className="text-xl font-semibold mb-3">Patient Management</h3>
+            <h3 className="text-xl font-semibold mb-3">{t('features.patientManagement.title')}</h3>
             <p className="text-gray-600">
-              Comprehensive patient records with medical history and demographics
+              {t('features.patientManagement.description')}
             </p>
           </div>
           
           <div className="card text-center">
             <div className="text-4xl mb-4">📊</div>
-            <h3 className="text-xl font-semibold mb-3">Professional Dashboard</h3>
+            <h3 className="text-xl font-semibold mb-3">{t('features.professionalDashboard.title')}</h3>
             <p className="text-gray-600">
-              Real-time statistics and quick actions for medical professionals
+              {t('features.professionalDashboard.description')}
             </p>
           </div>
         </div>
 
         <div className="card">
-          <h2 className="text-2xl font-bold mb-6">Key Features</h2>
+          <h2 className="text-2xl font-bold mb-6">{t('keyFeatures.title')}</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h3 className="font-semibold mb-2">🔒 Secure Multi-Tenancy</h3>
-              <p className="text-gray-600 text-sm">Complete data isolation between medical practices</p>
+              <h3 className="font-semibold mb-2">{t('keyFeatures.secureMultiTenancy.title')}</h3>
+              <p className="text-gray-600 text-sm">{t('keyFeatures.secureMultiTenancy.description')}</p>
             </div>
             <div>
-              <h3 className="font-semibold mb-2">👨‍⚕️ Role-Based Access</h3>
-              <p className="text-gray-600 text-sm">Admin, Doctor, Nurse, and Receptionist roles</p>
+              <h3 className="font-semibold mb-2">{t('keyFeatures.roleBasedAccess.title')}</h3>
+              <p className="text-gray-600 text-sm">{t('keyFeatures.roleBasedAccess.description')}</p>
             </div>
             <div>
-              <h3 className="font-semibold mb-2">📱 Responsive Design</h3>
-              <p className="text-gray-600 text-sm">Works perfectly on desktop and mobile devices</p>
+              <h3 className="font-semibold mb-2">{t('keyFeatures.responsiveDesign.title')}</h3>
+              <p className="text-gray-600 text-sm">{t('keyFeatures.responsiveDesign.description')}</p>
             </div>
             <div>
-              <h3 className="font-semibold mb-2">🚀 Modern Tech Stack</h3>
-              <p className="text-gray-600 text-sm">Built with Next.js 14, TypeScript, and Prisma</p>
+              <h3 className="font-semibold mb-2">{t('keyFeatures.modernTechStack.title')}</h3>
+              <p className="text-gray-600 text-sm">{t('keyFeatures.modernTechStack.description')}</p>
             </div>
           </div>
         </div>
