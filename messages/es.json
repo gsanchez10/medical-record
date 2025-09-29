@@ -1,0 +1,96 @@
+{
+  "metadata": {
+    "title": "SaaS de Registros Médicos",
+    "description": "Sistema de gestión de registros médicos multi-inquilino"
+  },
+  "homepage": {
+    "title": "SaaS de Registros Médicos",
+    "subtitle": "Sistema completo de gestión de práctica médica multi-inquilino. Seguro, escalable y diseñado para profesionales de la salud.",
+    "viewDashboard": "Ver Dashboard",
+    "getStarted": "Comenzar",
+    "features": {
+      "multiTenant": {
+        "title": "Multi-Inquilino",
+        "description": "Aislamiento completo entre prácticas médicas con arrendamiento basado en subdominios"
+      },
+      "patientManagement": {
+        "title": "Gestión de Pacientes",
+        "description": "Registros integrales de pacientes con historial médico y datos demográficos"
+      },
+      "professionalDashboard": {
+        "title": "Dashboard Profesional",
+        "description": "Estadísticas en tiempo real y acciones rápidas para profesionales médicos"
+      }
+    },
+    "keyFeatures": {
+      "title": "Características Principales",
+      "secureMultiTenancy": {
+        "title": "🔒 Multi-Inquilinato Seguro",
+        "description": "Aislamiento completo de datos entre prácticas médicas"
+      },
+      "roleBasedAccess": {
+        "title": "👨‍⚕️ Acceso Basado en Roles",
+        "description": "Roles de Administrador, Doctor, Enfermero y Recepcionista"
+      },
+      "responsiveDesign": {
+        "title": "📱 Diseño Responsivo",
+        "description": "Funciona perfectamente en escritorio y dispositivos móviles"
+      },
+      "modernTechStack": {
+        "title": "🚀 Stack Tecnológico Moderno",
+        "description": "Construido con Next.js 14, TypeScript y Prisma"
+      }
+    }
+  },
+  "dashboard": {
+    "logo": "🏥 Clínica Médica Demo",
+    "navigation": {
+      "dashboard": "Dashboard",
+      "patients": "Pacientes",
+      "records": "Registros",
+      "users": "Usuarios"
+    },
+    "userGreeting": "Dr. Usuario Admin",
+    "title": "Dashboard",
+    "subtitle": "Bienvenido a su sistema de gestión de práctica médica",
+    "stats": {
+      "totalPatients": "Total de Pacientes",
+      "medicalRecords": "Registros Médicos",
+      "recentActivity": "Actividad Reciente",
+      "scheduledToday": "Programados Hoy"
+    },
+    "quickActions": {
+      "title": "Acciones Rápidas",
+      "addNewPatient": {
+        "title": "Agregar Nuevo Paciente",
+        "description": "Registrar un nuevo paciente en el sistema"
+      },
+      "createRecord": {
+        "title": "Crear Registro",
+        "description": "Agregar un nuevo registro médico"
+      },
+      "scheduleAppointment": {
+        "title": "Programar Cita",
+        "description": "Reservar una nueva cita"
+      },
+      "manageUsers": {
+        "title": "Gestionar Usuarios",
+        "description": "Agregar o editar miembros del personal"
+      }
+    },
+    "recentActivity": {
+      "title": "Actividad Reciente",
+      "newPatientRegistered": "Nuevo paciente registrado",
+      "johnSmithAdded": "John Smith agregado al sistema",
+      "medicalRecordUpdated": "Registro médico actualizado",
+      "followUpNotes": "Notas de seguimiento agregadas para Jane Doe",
+      "newStaffMember": "Nuevo miembro del personal agregado",
+      "drSarahJohnson": "Dra. Sarah Johnson se unió como Doctora",
+      "hoursAgo": {
+        "2": "hace 2 horas",
+        "4": "hace 4 horas",
+        "6": "hace 6 horas"
+      }
+    }
+  }
+}
