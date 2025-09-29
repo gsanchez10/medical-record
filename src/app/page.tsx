@@ -1,13 +1,9 @@
 import Link from 'next/link'
 import {getTranslations} from 'next-intl/server';
-import LanguageSwitcher from '../../components/LanguageSwitcher'
+import LanguageSwitcher from '../components/LanguageSwitcher'
 
-type Props = {
-  params: {locale: string};
-};
-
-export default async function Home({params: {locale}}: Props) {
-  const t = await getTranslations({locale, namespace: 'homepage'});
+export default async function Home() {
+  const t = await getTranslations('homepage');
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
@@ -21,10 +17,10 @@ export default async function Home({params: {locale}}: Props) {
             {t('subtitle')}
           </p>
           <div className="flex gap-4 justify-center">
-            <Link href={`/${locale}/dashboard`} className="button">
+            <Link href="/dashboard" className="button">
               {t('viewDashboard')}
             </Link>
-            <Link href={`/${locale}/auth/signup`} className="button button-secondary">
+            <Link href="/auth/signup" className="button button-secondary">
               {t('getStarted')}
             </Link>
           </div>
