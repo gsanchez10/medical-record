@@ -1,0 +1,169 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Tenant {
+  id        String   @id @default(cuid())
+  name      String
+  subdomain String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  users         User[]
+  patients      Patient[]
+  medicalRecords MedicalRecord[]
+
+  @@map("tenants")
+}
+
+enum UserRole {
+  ADMIN
+  DOCTOR
+  NURSE
+  RECEPTIONIST
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  firstName String
+  lastName  String
+  role      UserRole @default(RECEPTIONIST)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Multi-tenant relation
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  // Relations
+  createdPatients   Patient[]       @relation("PatientCreatedBy")
+  updatedPatients   Patient[]       @relation("PatientUpdatedBy")
+  createdRecords    MedicalRecord[] @relation("RecordCreatedBy")
+  updatedRecords    MedicalRecord[] @relation("RecordUpdatedBy")
+
+  @@map("users")
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+model Patient {
+  id          String   @id @default(cuid())
+  firstName   String
+  lastName    String
+  dateOfBirth DateTime
+  gender      Gender
+  email       String?
+  phone       String?
+  address     String?
+  city        String?
+  state       String?
+  zipCode     String?
+  
+  // Emergency contact
+  emergencyContactName  String?
+  emergencyContactPhone String?
+  emergencyContactRelation String?
+  
+  // Medical information
+  bloodType    String?
+  allergies    String?
+  medications  String?
+  medicalHistory String?
+  
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Multi-tenant relation
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  // Audit fields
+  createdById String?
+  createdBy   User?   @relation("PatientCreatedBy", fields: [createdById], references: [id])
+  updatedById String?
+  updatedBy   User?   @relation("PatientUpdatedBy", fields: [updatedById], references: [id])
+
+  // Relations
+  medicalRecords MedicalRecord[]
+
+  @@map("patients")
+}
+
+enum RecordType {
+  CONSULTATION
+  DIAGNOSIS
+  TREATMENT
+  PRESCRIPTION
+  LAB_RESULT
+  IMAGING
+  SURGERY
+  FOLLOW_UP
+  EMERGENCY
+  VACCINATION
+}
+
+enum RecordStatus {
+  DRAFT
+  FINALIZED
+  ARCHIVED
+}
+
+model MedicalRecord {
+  id          String       @id @default(cuid())
+  type        RecordType
+  status      RecordStatus @default(DRAFT)
+  title       String
+  description String?
+  notes       String?
+  date        DateTime     @default(now())
+  
+  // Clinical data
+  symptoms    String?
+  diagnosis   String?
+  treatment   String?
+  prescription String?
+  followUpDate DateTime?
+  
+  // Vital signs
+  height      Float?
+  weight      Float?
+  bloodPressure String?
+  heartRate   Int?
+  temperature Float?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Multi-tenant relation
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  // Patient relation
+  patientId String
+  patient   Patient @relation(fields: [patientId], references: [id], onDelete: Cascade)
+
+  // Audit fields
+  createdById String?
+  createdBy   User?   @relation("RecordCreatedBy", fields: [createdById], references: [id])
+  updatedById String?
+  updatedBy   User?   @relation("RecordUpdatedBy", fields: [updatedById], references: [id])
+
+  @@map("medical_records")
+}
