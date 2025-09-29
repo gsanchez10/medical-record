@@ -1,12 +1,18 @@
 import Link from 'next/link'
 import {getTranslations} from 'next-intl/server';
+import LanguageSwitcher from '../../components/LanguageSwitcher'
 
-export default async function Home() {
-  const t = await getTranslations('homepage');
+type Props = {
+  params: {locale: string};
+};
+
+export default async function Home({params: {locale}}: Props) {
+  const t = await getTranslations({locale, namespace: 'homepage'});
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-16">
+        <LanguageSwitcher />
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
             {t('title')}
@@ -15,10 +21,10 @@ export default async function Home() {
             {t('subtitle')}
           </p>
           <div className="flex gap-4 justify-center">
-            <Link href="/dashboard" className="button">
+            <Link href={`/${locale}/dashboard`} className="button">
               {t('viewDashboard')}
             </Link>
-            <Link href="/auth/signup" className="button button-secondary">
+            <Link href={`/${locale}/auth/signup`} className="button button-secondary">
               {t('getStarted')}
             </Link>
           </div>
