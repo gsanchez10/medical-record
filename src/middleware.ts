@@ -7,6 +7,7 @@ export function middleware(request: NextRequest) {
   
   // Check for stored preference in cookie (set by the client)
   const preferredLocale = request.cookies.get('preferred-locale')?.value;
+  
   if (preferredLocale && ['en', 'es'].includes(preferredLocale)) {
     locale = preferredLocale;
   }
